@@ -18,11 +18,14 @@ namespace HTML{
 
         std::string id;
         std::vector<std::unique_ptr<Element>> children;
+        std::map<std::string, std::string> attributes;
 
         protected: 
             std::string class_spec;
             std::string element_name;
             std::string text; 
+
+            std::string buildAttribute() const;
 
         public:
             virtual ~Element() = default;
@@ -32,8 +35,9 @@ namespace HTML{
 
             void insertChild(std::unique_ptr<Element> child);
             void removeChild(std::unique_ptr<Element> child);
-
-
+            
+            //TODO: need to account for Boolean Attributes!
+            void addAttribute(std::string attribute, std::string value);
             std::string loopChildren() const;
             virtual std::string buildHTML() const = 0;
     };
