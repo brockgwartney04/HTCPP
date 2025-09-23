@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <vector>
 #include <memory>
@@ -33,6 +34,8 @@ namespace HTML{
             void setID(const std::string &val);
             void setClass(const std::string &val);
 
+
+            //Todo Classes into types of tags so that things like InsertCHild cannot be called by meta tags, have intermiditary class prolly
             void insertChild(std::unique_ptr<Element> child);
             void removeChild(std::unique_ptr<Element> child);
             
