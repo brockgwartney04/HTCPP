@@ -1,3 +1,4 @@
+#pragma once
 #include "element.hpp"
 
 namespace HTML {
@@ -13,7 +14,7 @@ namespace HTML {
             }
             
             std::string buildHTML() const override {
-                return "<" + element_name + ">" + text +  loopChildren() + "</" + element_name +">";
+                return "<" + element_name + buildAttribute() + ">" + text +  loopChildren() + "</" + element_name +">";
             }
 
     };

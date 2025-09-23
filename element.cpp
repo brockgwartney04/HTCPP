@@ -1,4 +1,5 @@
 #include "element.hpp"
+#include <sstream>
 
 namespace HTML{
 
@@ -18,6 +19,21 @@ namespace HTML{
 
     }
 
+    void Element::addAttribute(std::string attribute, std::string value){
+        attributes.insert_or_assign(attribute, value);
+    }
+
+    std::string Element::buildAttribute() const {
+
+        std::ostringstream ret_html;
+
+        for(const auto& [attribute, value] : attributes){
+            ret_html<<" "<<attribute<<"=\""<<value<<"\"";
+        }
+
+        return ret_html.str();
+    }
+
     std::string Element::loopChildren() const{
 
         std::string ret_html = "";
@@ -28,4 +44,5 @@ namespace HTML{
 
         return ret_html; 
     }
+
 }
